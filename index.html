@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>DPIA Sjekkliste</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- External libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <h1>DPIA Sjekkliste</h1>
+
+  <form id="dpiaForm">
+    <label for="formål">1. Hva er formålet med behandlingen?</label>
+    <textarea name="formål" id="purpose"></textarea>
+
+    <label for="nødvendig">2. Er behandlingen nødvendig for formålet?</label>
+    <textarea name="nødvendig" id="necessity"></textarea>
+
+    <label for="legalBasis">3. Hva er det rettslige grunnlaget for behandlingen?</label>
+    <textarea name="legalBasis" id="legalBasis"></textarea>
+
+    <label for="dataTypes">4. Hvilke typer personopplysninger behandles?</label>
+    <textarea name="dataTypes" id="dataTypes"></textarea>
+
+    <label for="sensitive">5. Behandles det særlige kategorier av personopplysninger?</label>
+    <textarea name="sensitive" id="sensitive"></textarea>
+
+    <label for="volume">6. Hvor mange personer gjelder behandlingen?</label>
+    <textarea name="volume" id="volume"></textarea>
+
+    <label for="dataFlow">7. Hvordan samles og lagres data? Hvordan deles de?</label>
+    <textarea name="dataFlow" id="dataFlow"></textarea>
+
+    <label for="access">8. Hvem har tilgang til opplysningene?</label>
+    <textarea name="access" id="access"></textarea>
+
+    <label for="transfers">9. Overføres opplysningene til utlandet?</label>
+    <textarea name="transfers" id="transfers"></textarea>
+
+    <label for="retention">10. Hvor lenge lagres opplysningene?</label>
+    <textarea name="retention" id="retention"></textarea>
+
+    <label for="measures">11. Hvilke sikkerhetstiltak er på plass?</label>
+    <textarea name="measures" id="measures"></textarea>
+
+    <label for="risks">12. Hva er risikoene for de registrerte?</label>
+    <textarea name="risks" id="risks"></textarea>
+  </form>
+
+  <!-- Export buttons outside the form -->
+  <div class="export-buttons">
+    <button type="button" onclick="generateDoc()">Eksporter til DOC</button>
+    <button type="button" onclick="generatePDF()">Eksporter til PDF</button>
+  </div>
+
+</body>
+</html>
