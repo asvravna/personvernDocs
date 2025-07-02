@@ -15,6 +15,15 @@
 <body>
 
     <h1>DPIA Sjekkliste</h1>
+    <form id="dpiaForm" onsubmit="return false;">
+        <div id="labelButtonContainer">
+            <label for="purpose">System</label>
+            <button id="googleSearchBtn">Søk</button>
+        </div>
+        <br />
+        <textarea name="formål" id="purpose" rows="4" cols="50"></textarea>
+
+    </form>
 
     <form id="dpiaForm">
         <label for="formål">1. Hva er formålet med behandlingen?</label>
@@ -96,26 +105,29 @@
     <div id="hamburger" onclick="toggleSidebar()">☰</div>
 
     <!-- Sidebar -->
-   <nav id="sidebar" class="sidebar">
-  <div class="sidebar-content">
-    <ul>
-      <li><a href="#dpia">DPIA Sjekkliste</a></li>
-      <li><a href="#tia">TIA - Transfer Impact Assessment</a></li>
-      <li><a href="#behandlingsprotokoll">Behandlingsprotokoll</a></li>
-      <li><a href="#ros">Risikovurdering (ROS)</a></li>
-      <li><a href="#cybersecurity">Cyber Security Advice</a></li>
-      <li><a href="#privacy-statement">Privacy Statement Builder</a></li>
-      <li><hr></li>
-      <li><a href="https://dataprivacyframework.gov" target="_blank" rel="noopener">Data Privacy Framework (DPF)</a></li>
-      <li><a href="https://edpb.europa.eu" target="_blank" rel="noopener">EDPB - Legal Advice</a></li>
-    </ul>
-  </div>
-  <div class="sidebar-footer">
-    &copy; <span id="year"></span> Anna Ravna — PrivacyGuard <br>
-    <em>v.1</em>
-  </div>
-</nav>
-    
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <ul>
+                <li><a href="#dpia">DPIA Sjekkliste</a></li>
+                <li><a href="#tia">TIA - Transfer Impact Assessment</a></li>
+                <li><a href="#behandlingsprotokoll">Behandlingsprotokoll</a></li>
+                <li><a href="#ros">Risikovurdering (ROS)</a></li>
+                <li><a href="#cybersecurity">Cyber Security Advice</a></li>
+                <li><a href="#privacy-statement">Privacy Statement Builder</a></li>
+                <li>
+                    <hr>
+                </li>
+                <li><a href="https://dataprivacyframework.gov" target="_blank" rel="noopener">Data Privacy Framework
+                        (DPF)</a></li>
+                <li><a href="https://edpb.europa.eu" target="_blank" rel="noopener">EDPB - Legal Advice</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            &copy; <span id="year"></span> Anna Ravna — PrivacyGuard <br>
+            <em>v.1</em>
+        </div>
+    </nav>
+
 </body>
 
 </html>

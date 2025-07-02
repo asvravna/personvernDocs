@@ -25,6 +25,13 @@ label {
   color: #1B5E20;
 }
 
+#labelButtonContainer {
+  display: flex;
+  align-items: center; /* vertically center them */
+  gap: 8px; /* space between label and button */
+}
+
+
 textarea {
   width: 100%;
   height: 150px;
@@ -43,6 +50,15 @@ textarea:focus {
   background-color: #E8F5E9; /* Slightly darker light green */
   outline: none;
 }
+
+#googleSearchBtn {
+  padding: 4px 8px;      /* smaller padding */
+  width: 50px;
+  font-size: 0.8rem;     /* smaller text */
+  cursor: pointer;
+}
+
+
 button {
   margin-top: 20px; /* adds space to the right of each button */
 }

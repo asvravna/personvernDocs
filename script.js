@@ -1,3 +1,17 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('googleSearchBtn');
+  btn.addEventListener('click', () => {
+    const query = document.getElementById('purpose').value.trim();
+    if (query) {
+      const encodedQuery = encodeURIComponent(query);
+      window.open(`https://www.google.com/search?q=${encodedQuery}`, '_blank');
+    } else {
+      alert('Vennligst fyll inn systemnavn for å søke.');
+    }
+  });
+});
+
+
 function toggleSidebar() {
   const sidebar = document.getElementById('sidebar');
   const hamburger = document.getElementById('hamburger');
