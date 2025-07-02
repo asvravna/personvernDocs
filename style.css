@@ -1,10 +1,13 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
+  background-color: #FFFFFF; /* White background */
+  color: #1B5E20; /* Dark green text */
 }
 
 h1 {
   text-align: center;
+  color: #2E7D32; /* Dark green headings */
 }
 
 form {
@@ -19,6 +22,7 @@ label {
   font-weight: bold;
   margin-top: 20px;
   font-size: 18px;
+  color: #1B5E20;
 }
 
 textarea {
@@ -29,6 +33,18 @@ textarea {
   padding: 20px;
   font-size: 16px;
   resize: vertical;
+  border: 1px solid #A5D6A7; /* Light green border */
+  background-color: #F1F8E9; /* Very light green background */
+  color: #1B5E20;
+}
+
+textarea:focus {
+  border-color: #2E7D32; /* Dark green on focus */
+  background-color: #E8F5E9; /* Slightly darker light green */
+  outline: none;
+}
+button {
+  margin-top: 20px; /* adds space to the right of each button */
 }
 
 .button-group {
@@ -42,6 +58,16 @@ button {
   padding: 15px 30px;
   font-size: 16px;
   cursor: pointer;
+  background-color: #2E7D32; /* Dark green button bg */
+  color: white; /* White button text */
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #A5D6A7; /* Light green hover */
+  color: #1B5E20; /* Dark green text on hover */
 }
 
 /* Print styling */
@@ -66,9 +92,9 @@ button {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #eee;
+  background: #E8F5E9; /* Light green background */
   border: none;
-  color: #333;
+  color: #2E7D32; /* Dark green icon */
   font-size: 16px;
   width: 28px;
   height: 28px;
@@ -83,7 +109,8 @@ button {
 }
 
 .close-button:hover {
-  background-color: #ccc;
+  background-color: #A5D6A7; /* Light green hover */
+  color: #1B5E20;
 }
 
 .export-buttons {
@@ -99,15 +126,24 @@ button {
   font-size: 14px;
   padding: 8px 12px;
   cursor: pointer;
+  background-color: #2E7D32;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
+.export-buttons button:hover {
+  background-color: #A5D6A7;
+  color: #1B5E20;
+}
 
 /*Legal-tab*/
 .legal-tab {
   position: fixed;
   top: 50%;
   right: 0;
-  background-color: #0077cc;
+  background-color: #2E7D32; /* Dark green */
   color: white;
   padding: 10px 12px;
   border-radius: 8px 0 0 8px;
@@ -118,7 +154,7 @@ button {
 }
 
 .legal-tab:hover {
-  background-color: #005fa3;
+  background-color: #1B5E20; /* Darker green on hover */
 }
 
 .legal-panel {
@@ -127,8 +163,8 @@ button {
   right: -350px;
   width: 350px;
   height: 100%;
-  background-color: #f8f8f8;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #F1F8E9; /* Very light green */
+  box-shadow: -2px 0 5px rgba(46, 125, 50, 0.2); /* green shadow */
   transition: right 0.3s ease;
   padding: 20px;
   overflow-y: auto;
@@ -137,6 +173,7 @@ button {
   min-width: 250px;
   max-width: 700px;
   box-sizing: border-box;
+  color: #1B5E20;
 }
 
 .legal-panel.open {
@@ -153,7 +190,6 @@ button {
   background-color: transparent;
 }
 
-
 /* Hamburger button */
 #hamburger {
   position: fixed;
@@ -163,21 +199,18 @@ button {
   cursor: pointer;
   z-index: 1100;
   user-select: none;
-}
-#hamburger {
   transition: color 0.3s ease;
-  color: initial; /* your default color */
+  color: #2E7D32; /* Dark green */
 }
 
 #hamburger:hover {
-  color: #f39c12;
+  color: #A5D6A7; /* Light green hover */
 }
 
 /* White color only when open */
 #hamburger.open-icon {
   color: white;
 }
-
 
 /* Sidebar */
 .sidebar {
@@ -186,8 +219,8 @@ button {
   left: -260px; /* Hidden by default */
   width: 260px;
   height: 100vh;
-  background-color: #263238;
-  color: #fff;
+  background-color: #59b27d;
+  color: #FFFFFF; /* White text */
   padding-top: 60px;
   box-shadow: 2px 0 12px rgba(0,0,0,0.4);
   transition: left 0.3s ease;
@@ -216,7 +249,7 @@ button {
 }
 
 .sidebar ul li a {
-  color: #eee;
+  color: #A5D6A7; /* Light green links */
   text-decoration: none;
   font-weight: 600;
   display: block;
@@ -224,5 +257,5 @@ button {
 }
 
 .sidebar ul li a:hover {
-  color: #81d4fa;
+  color: #FFFFFF; /* White on hover */
 }
