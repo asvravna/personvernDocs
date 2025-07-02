@@ -75,14 +75,15 @@
 
             <h3>Personopplysningsloven § 1</h3>
             <p>Formålet med loven er å beskytte...</p>
+
             <!-- Links -->
             <h3>Eksterne ressurser</h3>
             <button
-                onclick="window.open('https://www.datatilsynet.no/regelverk-og-skjema/sikkerhetsvurdering-av-behandling-av-personopplysninger-dpia/', '_blank')">
+                onclick="window.open('https://www.datatilsynet.no/rettigheter-og-plikter/virksomhetenes-plikter/vurdering-av-personvernkonsekvenser/', '_blank')">
                 Datatilsynets DPIA-sjekkliste
             </button>
 
-            <button onclick="window.open('https://lovdata.no/dokument/SF/forskrift/2018-07-20-1053/§35', '_blank')">
+            <button onclick="window.open('https://lovdata.no/pro/#document/NL/lov/2018-06-15-38/gdpr/a35')">
                 Lovdata § 35
             </button>
         </div>
@@ -95,22 +96,26 @@
     <div id="hamburger" onclick="toggleSidebar()">☰</div>
 
     <!-- Sidebar -->
-    <nav id="sidebar" class="sidebar">
-        <ul>
-            <li><a href="#dpia">DPIA Sjekkliste</a></li>
-            <li><a href="#tia">TIA - Transfer Impact Assessment</a></li>
-            <li><a href="#behandlingsprotokoll">Behandlingsprotokoll</a></li>
-            <li><a href="#ros">Risikovurdering (ROS)</a></li>
-            <li><a href="#cybersecurity">Cyber Security Advice</a></li>
-            <li><a href="#privacy-statement">Privacy Statement Builder</a></li>
-            <li>
-                <hr>
-            </li>
-            <li><a href="https://dataprivacyframework.gov" target="_blank" rel="noopener">Data Privacy Framework
-                    (DPF)</a></li>
-            <li><a href="https://edpb.europa.eu" target="_blank" rel="noopener">EDPB - Legal Advice</a></li>
-        </ul>
-    </nav>
+   <nav id="sidebar" class="sidebar">
+  <div class="sidebar-content">
+    <ul>
+      <li><a href="#dpia">DPIA Sjekkliste</a></li>
+      <li><a href="#tia">TIA - Transfer Impact Assessment</a></li>
+      <li><a href="#behandlingsprotokoll">Behandlingsprotokoll</a></li>
+      <li><a href="#ros">Risikovurdering (ROS)</a></li>
+      <li><a href="#cybersecurity">Cyber Security Advice</a></li>
+      <li><a href="#privacy-statement">Privacy Statement Builder</a></li>
+      <li><hr></li>
+      <li><a href="https://dataprivacyframework.gov" target="_blank" rel="noopener">Data Privacy Framework (DPF)</a></li>
+      <li><a href="https://edpb.europa.eu" target="_blank" rel="noopener">EDPB - Legal Advice</a></li>
+    </ul>
+  </div>
+  <div class="sidebar-footer">
+    &copy; <span id="year"></span> Anna Ravna — PrivacyGuard <br>
+    <em>v.1</em>
+  </div>
+</nav>
+    
 </body>
 
 </html>

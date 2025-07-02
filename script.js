@@ -82,3 +82,4 @@ function stopResize() {
   document.removeEventListener("mouseup", stopResize);
 }
 
+document.getElementById('year').textContent = new Date().getFullYear();
