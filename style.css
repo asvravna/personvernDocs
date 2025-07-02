@@ -61,3 +61,168 @@ button {
     page-break-inside: avoid;
   }
 }
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #eee;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  background-color: #ccc;
+}
+
+.export-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.export-buttons button {
+  font-size: 14px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+
+/*Legal-tab*/
+.legal-tab {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  background-color: #0077cc;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  z-index: 1000;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.legal-tab:hover {
+  background-color: #005fa3;
+}
+
+.legal-panel {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100%;
+  background-color: #f8f8f8;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 999;
+  resize: horizontal;
+  min-width: 250px;
+  max-width: 700px;
+  box-sizing: border-box;
+}
+
+.legal-panel.open {
+  right: 0;
+}
+
+.resize-handle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  cursor: ew-resize;
+  background-color: transparent;
+}
+
+
+/* Hamburger button */
+#hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1100;
+  user-select: none;
+}
+#hamburger {
+  transition: color 0.3s ease;
+  color: initial; /* your default color */
+}
+
+#hamburger:hover {
+  color: #f39c12;
+}
+
+/* White color only when open */
+#hamburger.open-icon {
+  color: white;
+}
+
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px; /* Hidden by default */
+  width: 260px;
+  height: 100vh;
+  background-color: #263238;
+  color: #fff;
+  padding-top: 60px;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.4);
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  z-index: 1050;
+}
+
+/* When sidebar is open */
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+  padding: 0 20px;
+}
+
+.sidebar ul li hr {
+  border-color: rgba(255,255,255,0.1);
+}
+
+.sidebar ul li a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+  transition: color 0.2s;
+}
+
+.sidebar ul li a:hover {
+  color: #81d4fa;
+}
