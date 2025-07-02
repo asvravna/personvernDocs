@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>TIA - Transfer Impact Assessment</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1>TIA - Transfer Impact Assessment</h1>
+
+  <form id="tiaForm" onsubmit="return false;">
+    <label for="recipient">1. Hvem er mottakeren av opplysningene (f.eks. leverandør)?</label>
+    <textarea id="recipient" name="recipient"></textarea>
+
+    <label for="country">2. Hvilket land overføres opplysningene til?</label>
+    <textarea id="country" name="country"></textarea>
+
+    <label for="legalFramework">3. Hvilke lover gjelder i mottakerlandet?</label>
+    <textarea id="legalFramework" name="legalFramework"></textarea>
+
+    <label for="measures">4. Hvilke tekniske og organisatoriske tiltak brukes?</label>
+    <textarea id="measures" name="measures"></textarea>
+
+    <label for="dpAssessment">5. Kan personvernet ivaretas på et tilstrekkelig nivå?</label>
+    <textarea id="dpAssessment" name="dpAssessment"></textarea>
+  </form>
+
+  <div class="export-buttons">
+    <button type="button" onclick="generateTIADoc()">Eksporter til DOC</button>
+    <button type="button" onclick="generateTIAPDF()">Eksporter til PDF</button>
+  </div>
+
+
+
+<a href="index.html" class="home-icon" aria-label="Hjem">
+  <!-- Bruk SVG for et hus-ikon med mørkegrønn farge -->
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="#006400" xmlns="http://www.w3.org/2000/svg" >
+    <path d="M3 9.5L12 3L21 9.5V20C21 20.5523 20.5523 21 20 21H16C15.4477 21 15 20.5523 15 20V15H9V20C9 20.5523 8.55228 21 8 21H4C3.44772 21 3 20.5523 3 20V9.5Z" />
+  </svg>
+</a>
+</body>
+</html>

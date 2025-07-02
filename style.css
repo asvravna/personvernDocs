@@ -1,13 +1,13 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: #FFFFFF; /* White background */
-  color: #1B5E20; /* Dark green text */
+  background-color: #FFFFFF; 
+  color: #1B5E20; 
 }
 
 h1 {
   text-align: center;
-  color: #2E7D32; /* Dark green headings */
+  color: #2E7D32; 
 }
 
 form {
@@ -27,8 +27,8 @@ label {
 
 #labelButtonContainer {
   display: flex;
-  align-items: center; /* vertically center them */
-  gap: 8px; /* space between label and button */
+  align-items: center; 
+  gap: 8px; 
 }
 
 
@@ -40,27 +40,27 @@ textarea {
   padding: 20px;
   font-size: 16px;
   resize: vertical;
-  border: 1px solid #A5D6A7; /* Light green border */
-  background-color: #F1F8E9; /* Very light green background */
+  border: 1px solid #A5D6A7; 
+  background-color: #F1F8E9; 
   color: #1B5E20;
 }
 
 textarea:focus {
-  border-color: #2E7D32; /* Dark green on focus */
-  background-color: #E8F5E9; /* Slightly darker light green */
+  border-color: #2E7D32; 
+  background-color: #E8F5E9; 
   outline: none;
 }
 
 #googleSearchBtn {
-  padding: 4px 8px;      /* smaller padding */
+  padding: 4px 8px;      
   width: 50px;
-  font-size: 0.8rem;     /* smaller text */
+  font-size: 0.8rem;     
   cursor: pointer;
 }
 
 
 button {
-  margin-top: 20px; /* adds space to the right of each button */
+  margin-top: 20px; 
 }
 
 .button-group {
@@ -74,19 +74,19 @@ button {
   padding: 15px 30px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #2E7D32; /* Dark green button bg */
-  color: white; /* White button text */
+  background-color: #2E7D32; 
+  color: white; 
   border: none;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #A5D6A7; /* Light green hover */
-  color: #1B5E20; /* Dark green text on hover */
+  background-color: #A5D6A7; 
+  color: #1B5E20; 
 }
 
-/* Print styling */
+
 @media print {
   button {
     display: none;
@@ -108,9 +108,9 @@ button:hover {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #E8F5E9; /* Light green background */
+  background: #E8F5E9; 
   border: none;
-  color: #2E7D32; /* Dark green icon */
+  color: #2E7D32; 
   font-size: 16px;
   width: 28px;
   height: 28px;
@@ -125,7 +125,7 @@ button:hover {
 }
 
 .close-button:hover {
-  background-color: #A5D6A7; /* Light green hover */
+  background-color: #A5D6A7; 
   color: #1B5E20;
 }
 
@@ -154,12 +154,12 @@ button:hover {
   color: #1B5E20;
 }
 
-/*Legal-tab*/
+
 .legal-tab {
   position: fixed;
   top: 50%;
   right: 0;
-  background-color: #2E7D32; /* Dark green */
+  background-color: #2E7D32; 
   color: white;
   padding: 10px 12px;
   border-radius: 8px 0 0 8px;
@@ -170,7 +170,7 @@ button:hover {
 }
 
 .legal-tab:hover {
-  background-color: #1B5E20; /* Darker green on hover */
+  background-color: #1B5E20; 
 }
 
 .legal-panel {
@@ -179,8 +179,8 @@ button:hover {
   right: -350px;
   width: 350px;
   height: 100%;
-  background-color: #F1F8E9; /* Very light green */
-  box-shadow: -2px 0 5px rgba(46, 125, 50, 0.2); /* green shadow */
+  background-color: #F1F8E9; 
+  box-shadow: -2px 0 5px rgba(46, 125, 50, 0.2); 
   transition: right 0.3s ease;
   padding: 20px;
   overflow-y: auto;
@@ -206,7 +206,7 @@ button:hover {
   background-color: transparent;
 }
 
-/* Hamburger button */
+
 #hamburger {
   position: fixed;
   top: 15px;
@@ -216,29 +216,29 @@ button:hover {
   z-index: 1100;
   user-select: none;
   transition: color 0.3s ease;
-  color: #2E7D32; /* Dark green */
+  color: #2E7D32; 
 }
 
 #hamburger:hover {
-  color: #A5D6A7; /* Light green hover */
+  color: #A5D6A7; 
 }
 
-/* White color only when open */
+
 #hamburger.open-icon {
   color: white;
 }
 
-/* Sidebar */
+
 
 
 .sidebar {
   position: fixed;
   top: 0;
-  left: -260px;          /* hidden */
+  left: -260px;          
   width: 260px;
   height: 100vh;
-  background-color: #59b27d;  /* cool green */
-  color: #a5d6a7;              /* light green text */
+  background-color: #59b27d;  
+  color: #a5d6a7;              
   transition: left 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -253,7 +253,7 @@ button:hover {
 
 .sidebar-content {
   flex-grow: 1;
-  overflow-y: auto;   /* scroll only this */
+  overflow-y: auto;   
   padding: 60px 20px 20px 20px;
 }
 
@@ -267,38 +267,57 @@ button:hover {
   user-select: none;
 }
 
-/* Remove bullets and padding/margin on the ul */
+
 .sidebar-content ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-/* Style the list items */
+
 .sidebar-content ul li {
   margin: 12px 0;
 }
 
-/* Style the links */
+
 .sidebar-content ul li a {
-  color: #a5d6a7;          /* light green */
-  text-decoration: none;   /* no underline */
+  color: #a5d6a7;          
+  text-decoration: none;   
   font-weight: 600;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: block;          /* makes the whole area clickable */
+  display: block;          
   padding: 6px 10px;
   border-radius: 6px;
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hover/focus effect for links */
+
 .sidebar-content ul li a:hover,
 .sidebar-content ul li a:focus {
-  color: #ffffff;             /* white text on hover */
+  color: #ffffff;             
   text-decoration: none;
   outline: none;
 }
 .sidebar-content ul li hr {
   border-color: rgba(255, 255, 255, 0.2);
   margin: 12px 0;
+}
+
+.home-icon {
+  position: fixed;
+  bottom: 20px;  /* 20px opp fra bunnen */
+  left: 20px;    /* 20px inn fra venstre */
+  cursor: pointer;
+  z-index: 1000; /* ligger over andre elementer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  text-decoration: none;
+}
+.home-icon svg {
+  display: block;
+}
+.home-icon:hover svg {
+  fill: #004d00; /* Mørkere grønn ved hover */
 }
