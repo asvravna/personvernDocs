@@ -21,17 +21,17 @@ body {
 }
 
 
-
 h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   color: #1B5E20; 
+  font-size: 3.5rem;
 
 }
 .subheading {
   color: #4CAF50;
   font-weight: 400;
   margin-bottom: 4rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .grid {
@@ -60,11 +60,11 @@ h1 {
   transform: translateY(-5px) scale(1.02);
 }
 .box h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .box p {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .footer {
   position: fixed;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8"/>
+  <title>ROS-Risiko-og sårbarhetsanalyse</title>
+  <link rel="stylesheet" href="ros.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  
+  <script src="ros.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+
+</head>
+<body>
+  <h1>ROS-Risiko-og sårbarhetsanalyse</h1>
+  <form id="tiaForm" onsubmit="return false;">
+   <textarea class="textarea-ros" id="textarea" name="recipient" rows="4"></textarea>
+    <button type="button" id="addRiskButton">Legg til risiko</button>
+  </form>
+
+  <div id="risikoListe">
+    <h2>Registrerte risikoer:</h2>
+    <ul id="riskList"></ul>
+  </div>
+  <button id="exportButton">Eksporter til Excel</button>
+
+     <!-- Hamburger icon -->
+    <div id="hamburger" onclick="toggleSidebar()">☰</div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <ul>
+                <li><a href="dpia.html">DPIA Sjekkliste</a></li>
+                <li><a href="tia.html">TIA - Transfer Impact Assessment</a></li>
+                <li><a href="ros.html">Risikovurdering (ROS)</a></li>
+                <li>
+                    <hr>
+                </li>
+                <li><a href="https://dataprivacyframework.gov" target="_blank" rel="noopener">Data Privacy Framework
+                        (DPF)</a></li>
+                <li><a href="https://edpb.europa.eu" target="_blank" rel="noopener">EDPB - Legal Advice</a></li>
+            </ul>
+        </div>
+    </nav>
+<a href="index.html" class="home-icon" aria-label="Hjem">
+  <!-- Bruk SVG for et hus-ikon med mørkegrønn farge -->
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="#006400" xmlns="http://www.w3.org/2000/svg" >
+    <path d="M3 9.5L12 3L21 9.5V20C21 20.5523 20.5523 21 20 21H16C15.4477 21 15 20.5523 15 20V15H9V20C9 20.5523 8.55228 21 8 21H4C3.44772 21 3 20.5523 3 20V9.5Z" />
+  </svg>
+</a>
+
+</body>
+</html>
