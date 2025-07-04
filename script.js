@@ -133,13 +133,26 @@ window.addEventListener('load', () => {
 
 document.getElementById('lagreKnapp').addEventListener('click', () => {
   // Lagre verdier til localStorage
-  feltIds.forEach(id => {
-    const felt = document.getElementById(id);
-    if (!felt) return;
-    localStorage.setItem(id, felt.value);
-  });
-  alert('Skjema lagret!');
+   const formFields = ['purpose', 'necessity', 'legalBasis', 'dataTypes', 'sensitive', 'volume', 'dataFlow', 'access', 'transfers', 'retention', 'measures', 'risks'];
+ 
+    formFields.forEach(id => {
+        const value = document.getElementById(id).value;
+        localStorage.setItem(id, value);
+    });
+
+    visStatusmelding('✔️ Data lagret', 'green');
 });
+
+function visStatusmelding(melding, farge) {
+    const statusEl = document.getElementById('saveStatus');
+    statusEl.textContent = melding;
+    statusEl.style.color = farge || 'green';
+
+    // Fjern meldingen etter 3 sekunder
+    setTimeout(() => {
+        statusEl.textContent = '';
+    }, 3000);
+}
 
 
 

@@ -61,8 +61,32 @@ textarea:focus {
 
 button {
   margin-top: 20px; 
-  width: 180px;
+  width: 125px;
   height:45px;
+}
+.ekstern-knapp {
+  width: 140px;
+  height:60px;
+  background-color:  #2E7D32;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  
+}
+
+.knapp-container {
+  display: flex;
+  gap: 10px; /* Mellomrom mellom knappene */
+  margin-top: 15px;
+  flex-wrap: wrap; 
+}
+
+.knapp-container button {
+  flex-shrink: 0; /* Behold størrelsen */
+}
+.ekstern-knapp:hover {
+  background-color: #A5D6A7; 
 }
 
 #googleSearchBtn {
@@ -326,5 +350,5 @@ button:hover {
   display: block;
 }
 .home-icon:hover svg {
-  fill: #004d00; /* Mørkere grønn ved hover */
+  fill: #a5d6a7;  
 }
