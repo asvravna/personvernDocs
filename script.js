@@ -20,11 +20,11 @@ function toggleSidebar() {
     sidebar.classList.toggle('open');
 
     if (sidebar.classList.contains('open')) {
-      hamburger.textContent = '✕'; // X icon
-      hamburger.classList.add('open-icon'); // add white color class
+      hamburger.textContent = '✕'; 
+      hamburger.classList.add('open-icon'); 
     } else {
-      hamburger.textContent = '☰'; // hamburger icon
-      hamburger.classList.remove('open-icon'); // remove white color class
+      hamburger.textContent = '☰'; 
+      hamburger.classList.remove('open-icon'); 
     }
   }
 }
@@ -72,7 +72,7 @@ function toggleLegalPanel() {
 }
 
 
-// Drag-to-resize logic
+
 let isResizing = false;
 
 function startResize(e) {
@@ -96,4 +96,50 @@ function stopResize() {
   document.removeEventListener("mouseup", stopResize);
 }
 
-document.getElementById('year').textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
+  const yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+});
+
+
+
+function åpneGoogleOversettelse() {
+  const tekst = document.getElementById("sourceText").value;
+  const url = `https://translate.google.com/?sl=en&tl=no&text=${encodeURIComponent(tekst)}&op=translate`;
+  window.open(url, "_blank");
+}
+
+
+//lagring
+const feltIds = [
+  'sourceText', 'purpose', 'necessity', 'legalBasis', 'dataTypes',
+  'sensitive', 'volume', 'dataFlow', 'access', 'transfers',
+  'retention', 'measures', 'risks'
+];
+
+window.addEventListener('load', () => {
+  // Last inn verdier fra localStorage og fyll feltene
+  feltIds.forEach(id => {
+    const felt = document.getElementById(id);
+    if (!felt) return;
+    const lagretTekst = localStorage.getItem(id);
+    if (lagretTekst !== null) {
+      felt.value = lagretTekst;
+    }
+  });
+});
+
+document.getElementById('lagreKnapp').addEventListener('click', () => {
+  // Lagre verdier til localStorage
+  feltIds.forEach(id => {
+    const felt = document.getElementById(id);
+    if (!felt) return;
+    localStorage.setItem(id, felt.value);
+  });
+  alert('Skjema lagret!');
+});
+
+
+

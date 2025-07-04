@@ -61,7 +61,17 @@ textarea:focus {
 
 button {
   margin-top: 20px; 
+  width: 180px;
+  height:45px;
 }
+
+#googleSearchBtn {
+  margin-top: 20px; 
+  width: 80px;
+  height:25px;
+
+}
+
 
 .button-group {
   margin-top: 40px;
