@@ -79,3 +79,37 @@ h1 {
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+
+
+/* Add this CSS to your landing.css file */
+
+body {
+    padding: 20px; /* Padding around the body */
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow boxes to wrap to the next line */
+    justify-content: space-between; /* Evenly distribute space */
+}
+
+.box {
+    flex: 1 0 calc(30% - 10px); /* Responsive box size, adjust as needed */
+    background-color: #f8f9fa; /* Light background for contrast */
+    border: 1px solid #dee2e6; /* Border for visual separation */
+    border-radius: 5px; /* Rounded corners */
+    padding: 20px; /* Inner spacing */
+    margin: 5px; /* Outer margin between boxes */
+    text-align: center; /* Center the content */
+    text-decoration: none; /* Remove underline */
+    color: #343a40; /* Dark text color */
+}
+
+.box h2 {
+    font-size: 1.5rem; /* Set font size for titles */
+}
+
+.box p {
+    font-size: 1rem; /* Set font size for paragraph text */
+    overflow-wrap: break-word; /* Ensure long words break onto the next line */
+}
