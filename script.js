@@ -1,15 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('googleSearchBtn');
-  btn.addEventListener('click', () => {
-    const query = document.getElementById('purpose').value.trim();
-    if (query) {
-      const encodedQuery = encodeURIComponent(query);
-      window.open(`https://www.google.com/search?q=${encodedQuery}`, '_blank');
-    } else {
-      alert('Vennligst fyll inn systemnavn for å søke.');
-    }
-  });
+  setupGoogleSearch();
 });
+
+function setupGoogleSearch() {
+  const btn = document.getElementById('googleSearchBtn');
+  btn.addEventListener('click', handleGoogleSearch);
+}
+
+function handleGoogleSearch() {
+  const query = document.getElementById('sourceText').value.trim();
+  if (query) {
+    const encodedQuery = encodeURIComponent(query);
+    window.open(`https://www.google.com/search?q=${encodedQuery}`, '_blank');
+  } else {
+    alert('Vennligst fyll inn systemnavn for å søke.');
+  }
+}
+
 
 
 function toggleSidebar() {
@@ -71,8 +78,6 @@ function toggleLegalPanel() {
   panel.classList.toggle("open");
 }
 
-
-
 let isResizing = false;
 
 function startResize(e) {
@@ -103,9 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
-
-function åpneGoogleOversettelse() {
+function openTranslater() {
   const tekst = document.getElementById("sourceText").value;
   const url = `https://translate.google.com/?sl=en&tl=no&text=${encodeURIComponent(tekst)}&op=translate`;
   window.open(url, "_blank");
