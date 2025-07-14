@@ -69,8 +69,8 @@ h1 {
 .footer {
   position: fixed;
   bottom: 0;
-  left: 0;           /* Legg til dette */
-  right: 0;          /* Legg til dette */
+  left: 0;           
+  right: 0;          
   color: #4CAF50;
   font-style: italic;
   text-align: center;
@@ -81,35 +81,35 @@ h1 {
 }
 
 
-/* Add this CSS to your landing.css file */
+
 
 body {
-    padding: 20px; /* Padding around the body */
+    padding: 20px; 
 }
 
 .grid {
     display: flex;
-    flex-wrap: wrap; /* Allow boxes to wrap to the next line */
-    justify-content: space-between; /* Evenly distribute space */
+    flex-wrap: wrap; 
+    justify-content: space-between; 
 }
 
 .box {
-    flex: 1 0 calc(30% - 10px); /* Responsive box size, adjust as needed */
-    background-color: #f8f9fa; /* Light background for contrast */
-    border: 1px solid #dee2e6; /* Border for visual separation */
-    border-radius: 5px; /* Rounded corners */
-    padding: 20px; /* Inner spacing */
-    margin: 5px; /* Outer margin between boxes */
-    text-align: center; /* Center the content */
-    text-decoration: none; /* Remove underline */
-    color: #343a40; /* Dark text color */
+    flex: 1 0 calc(30% - 10px); 
+    background-color: #f8f9fa; 
+    border: 1px solid #dee2e6; 
+    border-radius: 5px; 
+    padding: 20px; 
+    margin: 5px; 
+    text-align: center; 
+    text-decoration: none; 
+    color: #343a40; 
 }
 
 .box h2 {
-    font-size: 1.5rem; /* Set font size for titles */
+    font-size: 1.5rem; 
 }
 
 .box p {
-    font-size: 1rem; /* Set font size for paragraph text */
-    overflow-wrap: break-word; /* Ensure long words break onto the next line */
+    font-size: 1rem; 
+    overflow-wrap: break-word; 
 }
