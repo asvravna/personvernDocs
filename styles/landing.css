@@ -28,7 +28,7 @@ h1 {
 
 }
 .subheading {
-  color: #4CAF50;
+  color: #5bc475;
   font-weight: 400;
   margin-bottom: 4rem;
   font-size: 2.5rem;
@@ -56,8 +56,10 @@ h1 {
 .box:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  background-color: #d4edda;
+  background-color: #64be78;
   transform: translateY(-5px) scale(1.02);
+  text-decoration: none;
+  color: white;
 }
 .box h2 {
   font-size: 2rem;
@@ -83,33 +85,35 @@ h1 {
 
 
 
-body {
-    padding: 20px; 
-}
+@media (max-width: 768px) {
+  body {
+      padding: 20px; 
+  }
 
-.grid {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-}
+  .grid {
+      display: flex;
+      flex-wrap: wrap; 
+      justify-content: space-between; 
+  }
 
-.box {
-    flex: 1 0 calc(30% - 10px); 
-    background-color: #f8f9fa; 
-    border: 1px solid #dee2e6; 
-    border-radius: 5px; 
-    padding: 20px; 
-    margin: 5px; 
-    text-align: center; 
-    text-decoration: none; 
-    color: #343a40; 
-}
+  .box {
+      flex: 1 0 calc(30% - 10px); 
+      background-color: #f8f9fa; 
+      border: 1px solid #dee2e6; 
+      border-radius: 5px; 
+      padding: 20px; 
+      margin: 5px; 
+      text-align: center; 
+      text-decoration: none; 
+      color: #343a40; 
+  }
 
-.box h2 {
-    font-size: 1.5rem; 
-}
+  .box h2 {
+      font-size: 1.5rem; 
+  }
 
-.box p {
-    font-size: 1rem; 
-    overflow-wrap: break-word; 
+  .box p {
+      font-size: 1rem; 
+      overflow-wrap: break-word; 
+  }
 }

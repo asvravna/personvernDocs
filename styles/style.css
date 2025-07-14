@@ -19,9 +19,9 @@ form {
 }
 
 label {
-  font-weight: bold;
+  font-weight: semibold;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 25px;
   color: #1B5E20;
 }
 
@@ -30,6 +30,13 @@ label {
   align-items: center; 
   gap: 8px; 
 }
+mark {
+    background-color: #f1ff30; /* Change the background color to a more visible yellow */
+    color: black; /* Optional: Change text color for better contrast */
+    padding: 0.2em; /* Optional: Add some padding for better spacing */
+    border-radius: 2px; /* Optional: Add rounded corners */
+}
+
 
 
 textarea {
@@ -56,13 +63,14 @@ textarea:focus {
   width: 50px;
   font-size: 0.8rem;     
   cursor: pointer;
+  border:none;
 }
 
 
 button {
   margin-top: 20px; 
   width: 125px;
-  height:45px;
+  height:50px;
 }
 .ekstern-knapp {
   width: 140px;
@@ -77,13 +85,13 @@ button {
 
 .knapp-container {
   display: flex;
-  gap: 10px; /* Mellomrom mellom knappene */
+  gap: 10px; 
   margin-top: 15px;
   flex-wrap: wrap; 
 }
 
 .knapp-container button {
-  flex-shrink: 0; /* Behold størrelsen */
+  flex-shrink: 0; 
 }
 .ekstern-knapp:hover {
   background-color: #A5D6A7; 

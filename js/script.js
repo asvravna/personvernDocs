@@ -75,8 +75,18 @@ async function generatePDF() {
 
 function toggleLegalPanel() {
   const panel = document.getElementById("legalPanel");
+  const buttonGroup = document.querySelector(".export-buttons");
+
   panel.classList.toggle("open");
+
+  if (panel.classList.contains("open")) {
+    buttonGroup.style.display = "none";
+  } else {
+    buttonGroup.style.display = "flex";
+
+  }
 }
+
 
 let isResizing = false;
 
