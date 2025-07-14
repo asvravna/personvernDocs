@@ -31,10 +31,10 @@ label {
   gap: 8px; 
 }
 mark {
-    background-color: #f1ff30; /* Change the background color to a more visible yellow */
-    color: black; /* Optional: Change text color for better contrast */
-    padding: 0.2em; /* Optional: Add some padding for better spacing */
-    border-radius: 2px; /* Optional: Add rounded corners */
+    background-color: #f1ff30; 
+    color: black; 
+    padding: 0.2em; 
+    border-radius: 2px; 
 }
 
 
@@ -344,10 +344,10 @@ button:hover {
 
 .home-icon {
   position: fixed;
-  bottom: 20px;  /* 20px opp fra bunnen */
-  left: 20px;    /* 20px inn fra venstre */
+  bottom: 20px;  
+  left: 20px;    
   cursor: pointer;
-  z-index: 1000; /* ligger over andre elementer */
+  z-index: 1000; 
   display: flex;
   align-items: center;
   justify-content: center;

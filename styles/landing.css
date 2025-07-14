@@ -83,9 +83,7 @@ h1 {
 }
 
 
-
-
-@media (max-width: 768px) {
+@media (max-width: 1200px) { 
   body {
       padding: 20px; 
   }
@@ -97,7 +95,7 @@ h1 {
   }
 
   .box {
-      flex: 1 0 calc(30% - 10px); 
+      flex: 1 0 calc(100% - 10px);  /* Make boxes take full width on small screens */
       background-color: #f8f9fa; 
       border: 1px solid #dee2e6; 
       border-radius: 5px; 
