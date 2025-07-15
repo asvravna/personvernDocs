@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../styles/style.css">
 
+    <script src="../assets/infoTexts.js"></script>
 
     <!-- External libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -24,47 +25,99 @@
         </div>
         <br />
         <textarea id="sourceText" rows="4" cols="50" placeholder="Systembeskrivelse"></textarea>
-
         <button type="button" onclick="åpneGoogleOversettelse()">Oversett</button>
 
+        <div class="infobutton-beside-label">
+            <label for="omfang">1. Behandlingens omfang</label>
+            <button class="info-btn" onclick="showSnackbar('omfang')">i</button>
+        </div>
+        <textarea name="omfang" id="scope"></textarea>
 
-        <label for="formål">1. Hva er formålet med behandlingen?</label>
-        <textarea name="formål" id="purpose"></textarea>
+        <div class="infobutton-beside-label">
+            <label for="art">2. Behandlingens art</label>
+            <button class="info-btn" onclick="showSnackbar('art')">i</button>
+        </div>
+        <textarea name="art" id="type"></textarea>
 
-        <label for="nødvendig">2. Er behandlingen nødvendig for formålet?</label>
-        <textarea name="nødvendig" id="necessity"></textarea>
+        <h4>Lim inn bilde (Ctrl+V)</h4>
+        <div id="pasteArea" contenteditable="true" style="border: 1px dashed gray; padding: 10px;">
+        </div>
+        <input type="file" id="photoUpload" accept="image/*"/>
+        <!-- <input type="text" id="photoDescription" placeholder="Bildetekst" /><br><br> -->
+        <img id="pastedImage" style="max-width: 500px; display: none;" /><br><br>
+        <img id="photoPreview" src="" alt="Photo preview" />
 
-        <label for="legalBasis">3. Hva er det rettslige grunnlaget for behandlingen?</label>
+
+        <div class="infobutton-beside-label">
+            <label for="legalBasis">3. Hva er det rettslige grunnlaget for behandlingen?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Angi hvilket rettslig grunnlag som benyttes, f.eks. samtykke, avtale, lovpålagt osv.">i</button>
+        </div>
         <textarea name="legalBasis" id="legalBasis"></textarea>
 
-        <label for="dataTypes">4. Hvilke typer personopplysninger behandles?</label>
+        <div class="infobutton-beside-label">
+            <label for="dataTypes">4. Hvilke typer personopplysninger behandles?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Spesifiser hvilke typer data som behandles, f.eks. kontaktinformasjon, helseopplysninger.">i</button>
+        </div>
         <textarea name="dataTypes" id="dataTypes"></textarea>
 
-        <label for="sensitive">5. Behandles det særlige kategorier av personopplysninger?</label>
+        <div class="infobutton-beside-label">
+            <label for="sensitive">5. Behandles det særlige kategorier av personopplysninger?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Oppgi om det behandles sensitive data som helse, religion, fagforeningstilhørighet osv.">i</button>
+        </div>
         <textarea name="sensitive" id="sensitive"></textarea>
 
-        <label for="volume">6. Hvor mange personer gjelder behandlingen?</label>
+        <div class="infobutton-beside-label">
+            <label for="volume">6. Hvor mange personer gjelder behandlingen?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Gi et estimat på antall registrerte personer.">i</button>
+        </div>
         <textarea name="volume" id="volume"></textarea>
 
-        <label for="dataFlow">7. Hvordan samles og lagres data? Hvordan deles de?</label>
+        <div class="infobutton-beside-label">
+            <label for="dataFlow">7. Hvordan samles og lagres data? Hvordan deles de?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Beskriv datainnsamling, lagring, tilgangsstyring og eventuell deling.">i</button>
+        </div>
         <textarea name="dataFlow" id="dataFlow"></textarea>
 
-        <label for="access">8. Hvem har tilgang til opplysningene?</label>
+        <div class="infobutton-beside-label">
+            <label for="access">8. Hvem har tilgang til opplysningene?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Angi hvilke personer eller roller som har tilgang.">i</button>
+        </div>
         <textarea name="access" id="access"></textarea>
 
-        <label for="transfers">9. Overføres opplysningene til utlandet?</label>
+        <div class="infobutton-beside-label">
+            <label for="transfers">9. Overføres opplysningene til utlandet?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Oppgi om data overføres til tredjeland og hvilket rettsgrunnlag som benyttes.">i</button>
+        </div>
         <textarea name="transfers" id="transfers"></textarea>
 
-        <label for="retention">10. Hvor lenge lagres opplysningene?</label>
+        <div class="infobutton-beside-label">
+            <label for="retention">10. Hvor lenge lagres opplysningene?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Beskriv lagringsperiode og sletting/rutiner.">i</button>
+        </div>
         <textarea name="retention" id="retention"></textarea>
 
-        <label for="measures">11. Hvilke sikkerhetstiltak er på plass?</label>
+        <div class="infobutton-beside-label">
+            <label for="measures">11. Hvilke sikkerhetstiltak er på plass?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Nevn tiltak som tilgangskontroll, kryptering, logging osv.">i</button>
+        </div>
         <textarea name="measures" id="measures"></textarea>
 
-        <label for="risks">12. Hva er risikoene for de registrerte?</label>
+        <div class="infobutton-beside-label">
+            <label for="risks">12. Hva er risikoene for de registrerte?</label>
+            <button class="info-btn" onclick="showSnackbar(this)"
+                data-info="Vurder potensielle konsekvenser for de registrerte ved feil, misbruk eller brudd.">i</button>
+        </div>
         <textarea name="risks" id="risks"></textarea>
         <div id="saveStatus" style="margin-top: 10px; color: green; font-weight: bold;"></div>
-
     </form>
 
     <!-- Export buttons outside the form -->
@@ -72,10 +125,10 @@
         <button type="button" id="lagreKnapp">Lagre skjema</button>
         <button type="button" onclick="generateDoc()">Eksporter til DOC</button>
         <button type="button" onclick="generatePDF()">Eksporter til PDF</button>
-        <button type="button"
-            onclick="localStorage.clear(); visStatusmelding('♻️ Skjema nullstilt', 'orange'); location.reload();">
-            Nullstill
-        </button>
+        <button type="button" onclick="nullstill()">Nullstill</button>
+
+    </div>
+
 
     </div>
     <div id="legalTab" class="legal-tab" onclick="toggleLegalPanel()">§</div>
@@ -166,6 +219,13 @@
                 d="M3 9.5L12 3L21 9.5V20C21 20.5523 20.5523 21 20 21H16C15.4477 21 15 20.5523 15 20V15H9V20C9 20.5523 8.55228 21 8 21H4C3.44772 21 3 20.5523 3 20V9.5Z" />
         </svg>
     </a>
+    <div id="snackbar">
+        <p id="snackbarText"></p>
+        <button onclick="hideSnackbar()">Lukk</button>
+    </div>
+    <div id="saveMessage"
+        style="display: none; position: fixed; top: 20px; right: 20px; background: green; color: white; padding: 10px; z-index: 1000;">
+        Lagret!
 
 </body>
 

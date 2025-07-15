@@ -1,61 +1,344 @@
+let uploadedImage = null; // Global variable to store the uploaded image
+
+// Wait for DOM to load before adding event listeners
 document.addEventListener('DOMContentLoaded', () => {
-  setupGoogleSearch();
+    setupGoogleSearch();
+    setupPasteImage();
+    setupSaveButton();
+    setupPhotoUploadPreview();
+    updateYear();
+    loadSavedData();
+
+  const photoUpload = document.getElementById('photoUpload');
+  const pastedImage = document.getElementById('pastedImage');
+
+  photoUpload.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+   reader.onload = function(e) {
+  pastedImage.src = e.target.result;  // base64 data URL
+  pastedImage.style.display = 'block';
+  uploadedImage = e.target.result;    // Save base64 data globally
+};
+
+    reader.readAsDataURL(file);
+  });
 });
 
+// ----------------- Google Search -----------------
 function setupGoogleSearch() {
-  const btn = document.getElementById('googleSearchBtn');
-  btn.addEventListener('click', handleGoogleSearch);
+    const btn = document.getElementById('googleSearchBtn');
+    if (btn) {
+        btn.addEventListener('click', handleGoogleSearch);
+    }
 }
 
 function handleGoogleSearch() {
-  const query = document.getElementById('sourceText').value.trim();
-  if (query) {
-    const encodedQuery = encodeURIComponent(query);
-    window.open(`https://www.google.com/search?q=${encodedQuery}`, '_blank');
-  } else {
-    alert('Vennligst fyll inn systemnavn for å søke.');
-  }
+    const query = document.getElementById('sourceText').value.trim();
+    if (query) {
+        const encodedQuery = encodeURIComponent(query);
+        window.open(`https://www.google.com/search?q=${encodedQuery}`, '_blank');
+    } else {
+        alert('Vennligst fyll inn systemnavn for å søke.');
+    }
 }
 
+// ----------------- Paste image from clipboard -----------------
+let pastedImageBlob = null;
 
+function setupPasteImage() {
+    const pasteArea = document.getElementById('pasteArea');
+    if (pasteArea) {
+        pasteArea.addEventListener('paste', (event) => {
+            const items = event.clipboardData.items;
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                if (item.type.indexOf('image') !== -1) {
+                    const blob = item.getAsFile();
+                    pastedImageBlob = blob;
 
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  const hamburger = document.getElementById('hamburger');
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const img = document.getElementById('pastedImage');
+                        if (img) {
+                            img.src = e.target.result;
+                            img.style.display = 'block';
+                        }
+                    };
+                    reader.readAsDataURL(blob);
+                    break; // stop after first image found
+                }
+            }
+        });
+    }
+}
 
-  if (sidebar && hamburger) {
-    sidebar.classList.toggle('open');
+// ----------------- Photo Upload and Preview -----------------
+function setupPhotoUploadPreview() {
+    const photoUploadInput = document.getElementById('photoUpload');
+    if (photoUploadInput) {
+        photoUploadInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
 
-    if (sidebar.classList.contains('open')) {
-      hamburger.textContent = '✕'; 
-      hamburger.classList.add('open-icon'); 
-    } else {
-      hamburger.textContent = '☰'; 
-      hamburger.classList.remove('open-icon'); 
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadedImage = e.target.result;
+                localStorage.setItem('uploadedImage', uploadedImage);
+                updatePhotoPreview(uploadedImage);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+}
+
+function updatePhotoPreview(imageSrc) {
+    const previewContainer = document.getElementById('photoPreview');
+    // const description = document.getElementById('photoDescription')?.value || '';
+    if (previewContainer) {
+        previewContainer.innerHTML = `
+            <img src="${imageSrc}" alt="Lastet bilde" style="max-width: 300px; display: block;" />
+        `;
+    }
+}
+
+// ----------------- Load Saved Data -----------------
+function loadSavedData() {
+    const feltIds = [
+        'sourceText', 'scope', 'type', 'legalBasis', 'dataTypes',
+        'sensitive', 'volume', 'dataFlow', 'access', 'transfers',
+        'retention', 'measures', 'risks', 'photoDescription'
+    ];
+
+    feltIds.forEach(id => {
+        const field = document.getElementById(id);
+        if (!field) return;
+        const saved = localStorage.getItem(id);
+        if (saved !== null) {
+            field.value = saved;
+        }
+    });
+
+    const savedImage = localStorage.getItem('uploadedImage');
+    if (savedImage) {
+        uploadedImage = savedImage;
+        updatePhotoPreview(savedImage);
+    }
+    
+}
+
+// ----------------- Save Data and Show Message -----------------
+function setupSaveButton() {
+    const saveBtn = document.getElementById('lagreKnapp');
+    if (!saveBtn) return;
+
+    saveBtn.addEventListener('click', () => {
+        const feltIds = [
+            'sourceText', 'scope', 'type', 'legalBasis', 'dataTypes',
+            'sensitive', 'volume', 'dataFlow', 'access', 'transfers',
+            'retention', 'measures', 'risks', 'photoDescription'
+        ];
+
+        feltIds.forEach(id => {
+            const field = document.getElementById(id);
+            if (!field) return;
+            localStorage.setItem(id, field.value);
+        });
+
+        if (uploadedImage) {
+            localStorage.setItem('uploadedImage', uploadedImage);
+        }
+
+        showSaveMessage('Lagret!');
+    });
+}
+
+function showSaveMessage(message) {
+    const saveMessageDiv = document.getElementById('saveMessage');
+    if (!saveMessageDiv) return;
+
+    saveMessageDiv.textContent = message;
+    saveMessageDiv.style.display = 'block';
+
+    setTimeout(() => {
+        saveMessageDiv.style.display = 'none';
+    }, 3000);
+}
+
+// ----------------- Update Year -----------------
+function updateYear() {
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
+
+// ----------------- Snackbar: Information Display -----------------
+function showSnackbar(key) {
+    const snackbar = document.getElementById("snackbar");
+    const snackbarText = document.getElementById("snackbarText");
+    if (!snackbar || !snackbarText) return;
+
+    snackbarText.textContent = infoTexts?.[key] || "Ingen informasjon tilgjengelig.";
+    snackbar.classList.add("show");
+}
+
+function hideSnackbar() {
+    const snackbar = document.getElementById("snackbar");
+    if (!snackbar) return;
+
+    snackbar.classList.remove("show");
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const photoUpload = document.getElementById('photoUpload');
+  const pastedImage = document.getElementById('pastedImage');
+  const photoDescription = document.getElementById('photoDescription');
+  const pasteArea = document.getElementById('pasteArea');
+
+  // Load saved image and description on page load
+  const savedImage = localStorage.getItem('uploadedImage');
+  const savedDescription = localStorage.getItem('photoDescription');
+
+  if (savedImage) {
+    pastedImage.src = savedImage;
+    pastedImage.style.display = 'block';
+  }
+  if (savedDescription) {
+    photoDescription.value = savedDescription;
+  }
+
+  // Save photo description on change
+  // photoDescription.addEventListener('input', () => {
+  //   localStorage.setItem('photoDescription', photoDescription.value);
+  // });
+
+  // Resize image helper function
+  function resizeImage(dataUrl, maxWidth, maxHeight, callback) {
+    const img = new Image();
+    img.onload = () => {
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth || height > maxHeight) {
+        const aspectRatio = width / height;
+        if (width > height) {
+          width = maxWidth;
+          height = Math.round(maxWidth / aspectRatio);
+        } else {
+          height = maxHeight;
+          width = Math.round(maxHeight * aspectRatio);
+        }
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+
+      const resizedDataUrl = canvas.toDataURL('image/png', 0.8); // quality param for jpeg only, but PNG is fine
+      callback(resizedDataUrl);
+    };
+    img.src = dataUrl;
+  }
+
+  // Save image in localStorage safely
+  function saveImage(dataUrl) {
+    try {
+      localStorage.setItem('uploadedImage', dataUrl);
+      pastedImage.src = dataUrl;
+      pastedImage.style.display = 'block';
+      showStatus('Bilde lagret lokalt!');
+    } catch (e) {
+      alert('Bildet er for stort til å lagres. Prøv et mindre bilde.');
+      console.error(e);
     }
   }
-}
 
-
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function generateDoc() {
-  const form = document.getElementById('dpiaForm');
-  const data = new FormData(form);
-  let content = 'DPIA Sjekkliste\n\n';
-
-  for (let [key, value] of data.entries()) {
-    content += `${capitalize(key)}:\n${value}\n\n`;
+  // Show a small status message (you can customize this)
+  function showStatus(msg) {
+    const status = document.getElementById('saveStatus');
+    status.textContent = msg;
+    setTimeout(() => { status.textContent = ''; }, 3000);
   }
 
-  const blob = new Blob([content], { type: 'application/msword' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'DPIA_Sjekkliste.doc';
-  link.click();
+  // Handle file upload input (existing feature)
+  photoUpload.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      resizeImage(e.target.result, 800, 800, (resizedDataUrl) => {
+        saveImage(resizedDataUrl);
+      });
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Handle paste events in pasteArea
+  pasteArea.addEventListener('paste', (event) => {
+    const items = event.clipboardData.items;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.type.indexOf('image') !== -1) {
+        const blob = item.getAsFile();
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          resizeImage(e.target.result, 800, 800, (resizedDataUrl) => {
+            saveImage(resizedDataUrl);
+          });
+        };
+        reader.readAsDataURL(blob);
+
+        event.preventDefault(); // prevent default paste behavior (inserts image as is)
+        break; // handle only first image
+      }
+    }
+  });
+});
+function nullstill() {
+  // Remove only the keys you use, so you don't wipe unrelated localStorage data
+  localStorage.removeItem('uploadedImage');
+  localStorage.removeItem('photoDescription');
+  
+  // Clear inputs and image
+  document.getElementById('pastedImage').src = '';
+  document.getElementById('pastedImage').style.display = 'none';
+  document.getElementById('photoDescription').value = '';
+  document.getElementById('photoUpload').value = '';
+  
+  // Clear paste area (contenteditable div)
+  document.getElementById('pasteArea').innerHTML = '';
+  
+  // Optionally clear all textareas & inputs inside the form if you want a full reset
+  document.querySelectorAll('#dpiaForm textarea, #dpiaForm input[type="text"]').forEach(el => el.value = '');
+
+  visStatusmelding('♻️ Skjema nullstilt', 'orange');
 }
+
+function getImageBase64(imgElement) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous'; // Important to avoid CORS issues if served correctly
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const dataURL = canvas.toDataURL('image/png');
+      resolve(dataURL);
+    };
+    img.onerror = (err) => reject(err);
+    img.src = imgElement.src;
+  });
+}
+
 
 async function generatePDF() {
   const { jsPDF } = window.jspdf;
@@ -70,102 +353,55 @@ async function generatePDF() {
   const doc = new jsPDF();
   const lines = doc.splitTextToSize(content, 180);
   doc.text(lines, 10, 10);
+
+  const imgElement = document.getElementById('pastedImage');
+  if (imgElement && imgElement.src && imgElement.style.display !== 'none') {
+    try {
+      // Add the image to the PDF (you can adjust x,y,width,height)
+      doc.addImage(imgElement.src, 'PNG', 10, 100, 60, 60);
+    } catch (e) {
+      console.error('Failed to add image to PDF:', e);
+    }
+  }
+
   doc.save('DPIA_Sjekkliste.pdf');
 }
 
-function toggleLegalPanel() {
-  const panel = document.getElementById("legalPanel");
-  const buttonGroup = document.querySelector(".export-buttons");
 
-  panel.classList.toggle("open");
 
-  if (panel.classList.contains("open")) {
-    buttonGroup.style.display = "none";
-  } else {
-    buttonGroup.style.display = "flex";
+function generateDoc() {
+  const form = document.getElementById('dpiaForm');
+  const data = new FormData(form);
 
+  // Get the photo img element
+  const photoImg = document.getElementById('photoPreview'); // change to your img ID
+  let photoHTML = '';
+  if (photoImg && photoImg.src) {
+    photoHTML = `<img src="${photoImg.src}" style="max-width: 400px; height: auto;" /><br/>`;
   }
-}
 
-
-let isResizing = false;
-
-function startResize(e) {
-  isResizing = true;
-  document.addEventListener("mousemove", resizePanel);
-  document.addEventListener("mouseup", stopResize);
-}
-
-function resizePanel(e) {
-  if (!isResizing) return;
-  const panel = document.getElementById("legalPanel");
-  const newWidth = window.innerWidth - e.clientX;
-  if (newWidth > 250 && newWidth < 700) {
-    panel.style.width = newWidth + "px";
+  // Build HTML content string with form fields and image
+  let content = `<html><head><meta charset="UTF-8"></head><body>`;
+  content += `<h1>DPIA Sjekkliste</h1>`;
+  
+  for (let [key, value] of data.entries()) {
+    content += `<strong>${capitalize(key)}</strong>:<br/>${value}<br/><br/>`;
   }
-}
+  
+  content += photoHTML;
+  content += `</body></html>`;
 
-function stopResize() {
-  isResizing = false;
-  document.removeEventListener("mousemove", resizePanel);
-  document.removeEventListener("mouseup", stopResize);
-}
+  // Create a Blob with mime type for Word doc (HTML-based)
+  const blob = new Blob([content], { type: 'application/msword' });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const yearElement = document.getElementById('year');
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
-});
-
-function openTranslater() {
-  const tekst = document.getElementById("sourceText").value;
-  const url = `https://translate.google.com/?sl=en&tl=no&text=${encodeURIComponent(tekst)}&op=translate`;
-  window.open(url, "_blank");
+  // Trigger download
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'DPIA_Sjekkliste.doc';
+  link.click();
 }
 
 
-//lagring
-const feltIds = [
-  'sourceText', 'purpose', 'necessity', 'legalBasis', 'dataTypes',
-  'sensitive', 'volume', 'dataFlow', 'access', 'transfers',
-  'retention', 'measures', 'risks'
-];
-
-window.addEventListener('load', () => {
-  // Last inn verdier fra localStorage og fyll feltene
-  feltIds.forEach(id => {
-    const felt = document.getElementById(id);
-    if (!felt) return;
-    const lagretTekst = localStorage.getItem(id);
-    if (lagretTekst !== null) {
-      felt.value = lagretTekst;
-    }
-  });
-});
-
-document.getElementById('lagreKnapp').addEventListener('click', () => {
-  // Lagre verdier til localStorage
-   const formFields = ['purpose', 'necessity', 'legalBasis', 'dataTypes', 'sensitive', 'volume', 'dataFlow', 'access', 'transfers', 'retention', 'measures', 'risks'];
- 
-    formFields.forEach(id => {
-        const value = document.getElementById(id).value;
-        localStorage.setItem(id, value);
-    });
-
-    visStatusmelding('✔️ Data lagret', 'green');
-});
-
-function visStatusmelding(melding, farge) {
-    const statusEl = document.getElementById('saveStatus');
-    statusEl.textContent = melding;
-    statusEl.style.color = farge || 'green';
-
-    // Fjern meldingen etter 3 sekunder
-    setTimeout(() => {
-        statusEl.textContent = '';
-    }, 3000);
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-
-
