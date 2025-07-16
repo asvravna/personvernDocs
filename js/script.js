@@ -304,21 +304,31 @@ document.addEventListener('DOMContentLoaded', () => {
 function nullstill() {
   // Remove only the keys you use, so you don't wipe unrelated localStorage data
   localStorage.removeItem('uploadedImage');
-  localStorage.removeItem('photoDescription');
   
   // Clear inputs and image
   document.getElementById('pastedImage').src = '';
   document.getElementById('pastedImage').style.display = 'none';
-  document.getElementById('photoDescription').value = '';
   document.getElementById('photoUpload').value = '';
   
   // Clear paste area (contenteditable div)
   document.getElementById('pasteArea').innerHTML = '';
+
+  const form = document.getElementById('dpiaForm');
+  if (form) {
+    form.querySelectorAll('input, textarea').forEach(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        el.checked = false;
+      } else {
+        el.value = '';
+      }
+    });
+  }
+
   
   // Optionally clear all textareas & inputs inside the form if you want a full reset
   document.querySelectorAll('#dpiaForm textarea, #dpiaForm input[type="text"]').forEach(el => el.value = '');
 
-  visStatusmelding('♻️ Skjema nullstilt', 'orange');
+   showSaveMessage('Skjema nullstilt!');
 }
 
 function getImageBase64(imgElement) {
@@ -338,7 +348,6 @@ function getImageBase64(imgElement) {
     img.src = imgElement.src;
   });
 }
-
 
 async function generatePDF() {
   const { jsPDF } = window.jspdf;
@@ -366,8 +375,6 @@ async function generatePDF() {
 
   doc.save('DPIA_Sjekkliste.pdf');
 }
-
-
 
 function generateDoc() {
   const form = document.getElementById('dpiaForm');
@@ -404,4 +411,26 @@ function generateDoc() {
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const hamburger = document.getElementById('hamburger');
+
+  sidebar.classList.toggle('open');
+
+  // If it's now open, start listening for outside clicks
+  if (sidebar.classList.contains('open')) {
+    document.addEventListener('click', handleOutsideClick);
+  } else {
+    document.removeEventListener('click', handleOutsideClick);
+  }
+
+  function handleOutsideClick(event) {
+    // If click is outside both the sidebar and the hamburger
+    if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+      sidebar.classList.remove('open');
+      document.removeEventListener('click', handleOutsideClick);
+    }
+  }
 }
