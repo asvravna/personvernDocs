@@ -196,12 +196,11 @@ button:hover {
   color: #1B5E20;
 }
 
-
 .legal-tab {
   position: fixed;
   top: 50%;
   right: 0;
-  background-color: #2E7D32; 
+  background-color: #2E7D32;
   color: white;
   padding: 10px 12px;
   border-radius: 8px 0 0 8px;
@@ -209,33 +208,36 @@ button:hover {
   z-index: 1000;
   font-weight: bold;
   transition: background-color 0.3s;
+  transform: translateY(-50%);
 }
 
 .legal-tab:hover {
-  background-color: #1B5E20; 
+  background-color: #43a84a;
 }
 
 .legal-panel {
   position: fixed;
   top: 0;
-  right: -350px;
-  width: 350px;
-  height: 100%;
-  background-color: #F1F8E9; 
-  box-shadow: -2px 0 5px rgba(46, 125, 50, 0.2); 
-  transition: right 0.3s ease;
+  right: 0;
+  height: 100vh;
+  width: 28vw;
+  max-width: 90vw;
+  min-width: 250px;
+
+  background-color: #F1F8E9;
+  box-shadow: -2px 0 5px rgba(46, 125, 50, 0.2);
+  border-left: 2px solid #AED581;
+  color: #1B5E20;
+
   padding: 20px;
   overflow-y: auto;
-  z-index: 999;
-  resize: horizontal;
-  min-width: 250px;
-  max-width: 700px;
-  box-sizing: border-box;
-  color: #1B5E20;
-}
+  z-index: 1000;
 
-.legal-panel.open {
-  right: 0;
+  resize: horizontal;
+  overflow: auto;
+
+  display: none;
+  box-sizing: border-box;
 }
 
 .resize-handle {
@@ -246,6 +248,7 @@ button:hover {
   width: 6px;
   cursor: ew-resize;
   background-color: transparent;
+  z-index: 1001;
 }
 
 
